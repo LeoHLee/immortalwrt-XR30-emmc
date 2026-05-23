@@ -660,10 +660,9 @@ define Device/cmcc_rax3000m_common
 	pad-rootfs | append-metadata
 endef
 
-define Device/cmcc_rax3000m-emmc-mtk
+define Device/cmcc_rax3000m-emmc
   DEVICE_VENDOR := CMCC
-  DEVICE_MODEL := RAX3000M EMMC
-  DEVICE_VARIANT := (MTK layout)
+  DEVICE_MODEL := XR30 EMMC
   DEVICE_DTS := mt7981b-cmcc-rax3000m-emmc-mtk
   DEVICE_DTS_DIR := ../dts
   DEVICE_PACKAGES := kmod-usb3 f2fsck mkf2fs
@@ -671,9 +670,10 @@ define Device/cmcc_rax3000m-emmc-mtk
   KERNEL := kernel-bin | lzma | fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb
   KERNEL_INITRAMFS := kernel-bin | lzma | \
 	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb with-initrd | pad-to 64k
+  IMAGES += sysupgrade.bin
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
-TARGET_DEVICES += cmcc_rax3000m-emmc-mtk
+TARGET_DEVICES += cmcc_rax3000m-emmc
 
 define Device/cmcc_rax3000m-nand-mtk
   DEVICE_VENDOR := CMCC
