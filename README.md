@@ -67,7 +67,8 @@ To build your own firmware you need a GNU/Linux, BSD or macOS system (case sensi
      # MT7986
      cp -f defconfig/mt7986-ax6000.config .config
      
-  6. Run `make` to build your firmware. This will download all sources, build the cross-compile toolchain and then cross-compile the GNU/Linux kernel & all chosen applications for your target system.
+  6. Run `make menuconfig`. Select your hardware (`CMCC XR30 EMMC`) in `Target Profile` menu. You can also select your favorite packages. Follow the menuconfig page's instruction to save your config.
+  7. Run `make` to build your firmware. This will download all sources, build the cross-compile toolchain and then cross-compile the GNU/Linux kernel & all chosen applications for your target system. About 55GB free disk space is required.
 
   ### Related Repositories
   The main repository uses multiple sub-repositories to manage packages of different categories. All packages are installed via the OpenWrt package manager called opkg. If you're looking to develop the web interface or port packages to ImmortalWrt, please find the fitting repository below.

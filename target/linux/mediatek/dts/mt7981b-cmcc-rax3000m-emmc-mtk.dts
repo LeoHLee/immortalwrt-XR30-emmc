@@ -11,14 +11,14 @@
 #include "mt7981.dtsi"
 
 / {
-	model = "CMCC RAX3000M eMMC (MTK UBoot)";
+	model = "CMCC XR30 (eMMC)";
 	compatible = "cmcc,rax3000m-emmc", "mediatek,mt7981";
 
 	aliases {
 		led-boot = &red_led;
 		led-failsafe = &red_led;
-		led-running = &green_led;
-		led-upgrade = &green_led;
+		led-running = &white_led;
+		led-upgrade = &red_led;
 		serial0 = &uart0;
 	};
 
@@ -51,22 +51,14 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		green_led: led-0 {
-			function = LED_FUNCTION_STATUS;
-			color = <LED_COLOR_ID_GREEN>;
-			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
-		};
-
-		led-1 {
-			function = LED_FUNCTION_STATUS;
-			color = <LED_COLOR_ID_BLUE>;
-			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
-		};
-
-		red_led: led-2 {
-			function = LED_FUNCTION_STATUS;
-			color = <LED_COLOR_ID_RED>;
+		red_led: red {
+			label = "red:status";
 			gpios = <&pio 35 GPIO_ACTIVE_LOW>;
+		};
+
+		white_led: white {
+			label = "white:status";
+			gpios = <&pio 34 GPIO_ACTIVE_LOW>;
 		};
 	};
 };
